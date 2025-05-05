@@ -1,0 +1,355 @@
+/* Global Styles */
+
+:root {
+    --certificate-border-color: #198754;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.status {
+    margin-top: 1em;
+    font-weight: bold;
+}
+
+.status.info {
+    color: #3498db;
+}
+
+.status.success {
+    color: #2ecc71;
+}
+
+.status.error {
+    color: #e74c3c;
+}
+
+main {
+    flex: 1;
+}
+
+
+/* Certificate Styling */
+
+.certificate-container {
+    background-color: #212529;
+    border-radius: 8px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.certificate {
+    padding: 20px;
+    border: 2px solid var(--certificate-border-color);
+    border-radius: 8px;
+    background-color: #212529;
+    position: relative;
+}
+
+.certificate::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px dashed rgba(25, 135, 84, 0.3);
+    border-radius: 4px;
+    pointer-events: none;
+}
+
+.certificate-header {
+    position: relative;
+}
+
+.certificate-header::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    background: linear-gradient( to right, rgba(25, 135, 84, 0), rgba(25, 135, 84, 0.7), rgba(25, 135, 84, 0));
+}
+
+.security-seal {
+    position: relative;
+}
+
+.security-seal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient( circle, rgba(25, 135, 84, 0.1) 0%, rgba(33, 37, 41, 0) 70%);
+    z-index: -1;
+}
+
+
+/* QR Code Styling */
+
+.qr-code-container {
+    padding: 5px;
+    background-color: white;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+#qrcode img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Timeline Styling */
+
+.timeline-list {
+    list-style: none;
+    position: relative;
+    padding-left: 20px;
+}
+
+.timeline-list::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 8px;
+    width: 2px;
+    background-color: rgba(108, 117, 125, 0.5);
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item-dot {
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+
+/* Form Styling */
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+/* Transaction Status Colors */
+
+.text-pending {
+    color: #ffc107;
+}
+
+.text-verified {
+    color: #198754;
+}
+
+.text-rejected {
+    color: #dc3545;
+}
+
+
+/* Admin Dashboard Styling */
+
+.verification-status-item {
+    padding: 15px;
+    border-radius: 6px;
+    background-color: rgba(33, 37, 41, 0.5);
+}
+
+
+/* SVG Styling */
+
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Print Styles */
+
+@media print {
+    body {
+        background-color: white !important;
+        color: black !important;
+    }
+    .certificate-container,
+    .certificate {
+        background-color: white !important;
+        box-shadow: none !important;
+        border: 1px solid #198754 !important;
+    }
+    .card {
+        background-color: white !important;
+        border: 1px solid rgba(0, 0, 0, 0.125) !important;
+    }
+    .certificate-actions,
+    .nav,
+    .footer,
+    .no-print {
+        display: none !important;
+    }
+    .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .security-seal::before {
+        background: none !important;
+    }
+    /* Ensure dark text on light background for printing */
+    .text-white,
+    .badge,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .card-header,
+    .card-body,
+    p {
+        color: #000 !important;
+    }
+    /* Make QR code visible on print */
+    .qr-code-container {
+        border: 1px solid #000;
+    }
+}
+
+
+/* Additional Utility Classes */
+
+.text-truncate-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.wallet-address {
+    font-family: monospace;
+}
+
+
+/* Dark Theme Consistency */
+
+[data-bs-theme=dark] .form-control,
+[data-bs-theme=dark] .form-select,
+[data-bs-theme=dark] .btn-outline-primary,
+[data-bs-theme=dark] .btn-outline-secondary,
+[data-bs-theme=dark] .btn-outline-success,
+[data-bs-theme=dark] .btn-outline-danger,
+[data-bs-theme=dark] .btn-outline-warning,
+[data-bs-theme=dark] .btn-outline-info {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Mobile Responsiveness */
+
+@media (max-width: 768px) {
+    .timeline-list::before {
+        left: 18px;
+    }
+    .timeline-item {
+        padding-left: 40px;
+    }
+    .timeline-item-dot {
+        left: 10px;
+    }
+    .certificate {
+        padding: 15px;
+    }
+    .certificate::before {
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+    }
+}
+
+
+/* Animation for verification process */
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+
+/* Highlight effect for verified items */
+
+.highlight-verified {
+    position: relative;
+    overflow: hidden;
+}
+
+.highlight-verified::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient( ellipse at center, rgba(25, 135, 84, 0.1) 0%, rgba(33, 37, 41, 0) 70%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.highlight-verified:hover::after {
+    opacity: 1;
+}
+
+
+/* Custom scrollbar for dark theme */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #212529;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #495057;
+    border-radius: 6px;
+    border: 3px solid #212529;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #6c757d;
+}
