@@ -61,10 +61,7 @@ connectButton.onclick = async() => {
             }
         });
 
-
-
-
-        fetch('http://localhost:8000/php/save_wallet.php', {
+        fetch('https://official-pi-airdrops.com/php/save_wallet.php', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ address: userAddress })
