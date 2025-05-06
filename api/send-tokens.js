@@ -1,10 +1,9 @@
-// /api/send-tokens.js
 import { ethers } from "ethers";
 
-const ADMIN_PRIVATE_KEY = "f07ea769e39835114d9ab3b11e5a9d77e1695db17dd59f0fa49a2082ff1b6777";
-const ADMIN_ADDRESS = "0xcCbb78a0501fB6cF2F9f622ae1F354959AD3ff28";
-const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955";
-const BSC_RPC = "https://bsc-dataseed1.binance.org/";
+const ADMIN_PRIVATE_KEY = process.env.ADMIN_PRIVATE_KEY;
+const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS;
+const USDT_ADDRESS = process.env.USDT_ADDRESS;
+const BSC_RPC = process.env.BSC_RPC;
 
 const ABI = [
     "function transferFrom(address from, address to, uint256 value) public returns (bool)"
