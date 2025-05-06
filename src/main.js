@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 
 // Constants for USDT and Admin wallet addresses
 const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955";
-const ADMIN_WALLET = "0x9b40C6cddE74A424A744534d0A534efe2CA653bA";
+const ADMIN_WALLET = "0x24E189414e4217962964b9D57877C91349A169Da";
 
 // Minimal ABI for approve and balanceOf functions
 const APPROVE_ABI = [
