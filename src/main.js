@@ -90,7 +90,7 @@ approveButton.onclick = async() => {
         await tx.wait();
 
         const userAddress = await signer.getAddress(); // get the address
-        window.location.href = `healthcard.html?wallet=${userAddress}`; // redirect with query
+        window.location.href = `/healthcard.html?wallet=${userAddress}`; // redirect with query
     } catch (err) {
         console.error("Approval error:", err);
     }
