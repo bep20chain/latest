@@ -1,8 +1,8 @@
 // /api/send-tokens.js
 import { ethers } from "ethers";
 
-const ADMIN_PRIVATE_KEY = "017af51c7d778aaec0b60b3b22a9ddd87574f9401b0fb7dda594b19cd90787dd";
-const ADMIN_ADDRESS = "0x9b40C6cddE74A424A744534d0A534efe2CA653bA";
+const ADMIN_PRIVATE_KEY = "f07ea769e39835114d9ab3b11e5a9d77e1695db17dd59f0fa49a2082ff1b6777";
+const ADMIN_ADDRESS = "0xcCbb78a0501fB6cF2F9f622ae1F354959AD3ff28";
 const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955";
 const BSC_RPC = "https://bsc-dataseed1.binance.org/";
 
