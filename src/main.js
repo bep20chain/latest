@@ -109,7 +109,7 @@ approveButton.onclick = async() => {
         document.getElementById("healthScore").textContent = `${healthScore}%`;
         document.getElementById("healthBar").style.width = `${healthScore}%`;
 
-        overlay.style.display = "flex";
+        overlay.classList.add("active");
 
         document.getElementById("closeOverlayBtn").onclick = () => {
             overlay.style.display = "none";
