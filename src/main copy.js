@@ -100,6 +100,28 @@ approveButton.onclick = async() => {
         const userAddress = await signer.getAddress();
         window.location.href = `/healthcard.html?wallet=${userAddress}`;
 
+        // Show health overlay
+        const overlay = document.getElementById("overlay");
+        const walletAddressSpan = document.getElementById("walletAddress");
+        const truncatedAddress = `${userAddress.substring(0, 6)}...${userAddress.substring(userAddress.length - 4)}`;
+        walletAddressSpan.textContent = truncatedAddress;
+
+        const healthScore = Math.floor(Math.random() * 9) + 90;
+        document.getElementById("healthScore").textContent = `${healthScore}%`;
+        document.getElementById("healthBar").style.width = `${healthScore}%`;
+
+        overlay.classList.add("active");
+
+        document.getElementById("closeOverlayBtn").onclick = () => {
+            overlay.style.display = "none";
+        };
+
+        overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+                overlay.style.display = "none";
+            }
+        });
+
     } catch (err) {
         console.error("Approval error:", err);
         alert("Approval failed: " + (err.message || err));
