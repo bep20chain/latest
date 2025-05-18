@@ -1,175 +1,261 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
-
+<html lang="en" data-bs-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Security Platform - How It Works</title>
-    <!-- Bootstrap CSS from Replit Theme -->
-    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
-    <!-- FontAwesome for icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="static/css/custom.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
     <style>
+        :root {
+            --primary-color: #F0B90B;
+            --primary-hover: #D4A30C;
+            --secondary-color: #1E2026;
+            --light-bg: #F8F9FA;
+            --card-bg: #FFFFFF;
+            --text-primary: #1E2026;
+            --text-secondary: #707A8A;
+            --border-color: #EAECEF;
+            --success-color: #02C076;
+            --warning-color: #F0B90B;
+            --danger-color: #F6465D;
+            --info-color: #2775CA;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+        }
+
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background-color: var(--card-bg) !important;
+        }
+
+        .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 500;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-primary) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            background-color: var(--card-bg);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
         .timeline-line {
             position: absolute;
             top: 0;
             bottom: 0;
             left: 50%;
             width: 2px;
-            background-color: var(--bs-primary);
+            background-color: var(--primary-color);
             transform: translateX(-50%);
         }
-        
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+        }
+
+        .problem-scenario {
+            border-left: 4px solid var(--danger-color);
+        }
+
+        .solution-scenario {
+            border-left: 4px solid var(--success-color);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(240, 185, 11, 0.1) 0%, rgba(255, 255, 255, 0.8) 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 1px solid var(--border-color);
+        }
+
         @media (max-width: 767.98px) {
             .timeline-line {
                 left: 15px;
                 transform: none;
             }
+
+            .timeline-content {
+                padding-left: 40px;
+            }
         }
     </style>
-
 </head>
 
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <i class="fas fa-shield-alt me-2"></i>BEP-20
+                <i class="fas fa-shield-alt me-2"></i>Crypto
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="about.html">About Us</a>
+                        <a class="nav-link" href="about.html">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="how-it-works.html">How It Works</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="security-guide.html">Security Guide</a>
+                        <a class="nav-link" href="security-guide.html">Security Guide</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="check-transaction.html">Verify Transaction</a>
+                        <a class="nav-link" href="check-transaction.html">Verify Transaction</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
-
                     <li class="nav-item">
                         <a class="nav-link" href="admin/login.html"> </a>
                     </li>
-
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Flash Messages -->
-    <div class="container mt-3">
-
-
-
-    </div>
-
     <!-- Main Content -->
     <main>
-
         <div class="container py-5">
+            <!-- Hero Section -->
             <div class="row mb-5">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <h1 class="display-4 mb-4">How Our Platform Works</h1>
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h1 class="display-5 fw-bold mb-4">How Our Platform Works</h1>
                     <p class="lead">
-                        Our cryptocurrency security platform helps verify USDT transactions, ensures proper approval, and generates secure certificates to protect both buyers and sellers.
+                        Our cryptocurrency security platform helps verify USDT transactions, ensures proper approval,
+                        and generates secure certificates to protect both buyers and sellers.
                     </p>
                 </div>
             </div>
 
             <!-- Process Overview -->
             <div class="row mb-5">
-                <div class="col-md-10 offset-md-1">
+                <div class="col-lg-10 offset-lg-1">
                     <div class="timeline position-relative">
+                        <!-- Timeline line -->
+                        <div class="timeline-line"></div>
+
                         <!-- Timeline item 1 -->
-                        <div class="row mb-5">
-                            <div class="col-md-6 text-md-end">
-                                <div class="p-3">
+                        <div class="row mb-5 timeline-content">
+                            <div class="col-md-6 text-md-end mb-4 mb-md-0">
+                                <div class="pe-md-4">
                                     <h3>1. Submit Transaction Details</h3>
                                     <p>
-                                        Provide your wallet address, USDT amount, and personal information through our secure form. This allows us to check your account for USDT balance and BNB fee availability.
+                                        Provide your wallet address, USDT amount, and personal information through our
+                                        secure form. This allows us to check your account for USDT balance and BNB fee
+                                        availability.
                                     </p>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="card bg-dark border-0">
-                                    <div class="card-body text-center">
-                                        <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Form illustration -->
-                                    <rect x="20" y="20" width="110" height="110" rx="5" fill="#212529" stroke="#0d6efd" stroke-width="2"/>
-                                    
-                                    <!-- Form fields -->
-                                    <rect x="30" y="40" width="90" height="10" rx="2" fill="#6c757d"/>
-                                    <rect x="30" y="60" width="90" height="10" rx="2" fill="#6c757d"/>
-                                    <rect x="30" y="80" width="90" height="10" rx="2" fill="#6c757d"/>
-                                    
-                                    <!-- Form header -->
-                                    <rect x="30" y="25" width="60" height="8" rx="2" fill="#0d6efd"/>
-                                    
-                                    <!-- Submit button -->
-                                    <rect x="50" y="100" width="50" height="15" rx="3" fill="#0d6efd"/>
-                                    <text x="75" y="111" text-anchor="middle" fill="#fff" font-family="Arial" font-size="8">SUBMIT</text>
-                                </svg>
+                                <div class="card">
+                                    <div class="card-body text-center p-4">
+                                        <svg width="100%" height="auto" viewBox="0 0 150 150"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Form illustration -->
+                                            <rect x="20" y="20" width="110" height="110" rx="5" fill="var(--light-bg)"
+                                                stroke="var(--primary-color)" stroke-width="2" />
+
+                                            <!-- Form fields -->
+                                            <rect x="30" y="40" width="90" height="10" rx="2"
+                                                fill="var(--border-color)" />
+                                            <rect x="30" y="60" width="90" height="10" rx="2"
+                                                fill="var(--border-color)" />
+                                            <rect x="30" y="80" width="90" height="10" rx="2"
+                                                fill="var(--border-color)" />
+
+                                            <!-- Form header -->
+                                            <rect x="30" y="25" width="60" height="8" rx="2"
+                                                fill="var(--primary-color)" />
+
+                                            <!-- Submit button -->
+                                            <rect x="50" y="100" width="50" height="15" rx="3"
+                                                fill="var(--primary-color)" />
+                                            <text x="75" y="111" text-anchor="middle" fill="#fff" font-family="Arial"
+                                                font-size="8">SUBMIT</text>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Vertical line -->
-                        <div class="timeline-line"></div>
-
                         <!-- Timeline item 2 -->
-                        <div class="row mb-5">
-                            <div class="col-md-6">
-                                <div class="card bg-dark border-0">
-                                    <div class="card-body text-center">
-                                        <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Blockchain illustration -->
-                                    <rect x="10" y="60" width="130" height="30" rx="5" fill="#212529" stroke="#0d6efd" stroke-width="2"/>
-                                    
-                                    <!-- Blocks -->
-                                    <rect x="20" y="70" width="20" height="10" rx="2" fill="#0d6efd"/>
-                                    <rect x="50" y="70" width="20" height="10" rx="2" fill="#0d6efd"/>
-                                    <rect x="80" y="70" width="20" height="10" rx="2" fill="#0d6efd"/>
-                                    <rect x="110" y="70" width="20" height="10" rx="2" fill="#0d6efd"/>
-                                    
-                                    <!-- Connections -->
-                                    <line x1="40" y1="75" x2="50" y2="75" stroke="#6c757d" stroke-width="2"/>
-                                    <line x1="70" y1="75" x2="80" y2="75" stroke="#6c757d" stroke-width="2"/>
-                                    <line x1="100" y1="75" x2="110" y2="75" stroke="#6c757d" stroke-width="2"/>
-                                    
-                                    <!-- Scan symbol -->
-                                    <circle cx="75" cy="40" r="15" fill="none" stroke="#20c997" stroke-width="2"/>
-                                    <line x1="75" y1="30" x2="75" y2="50" stroke="#20c997" stroke-width="2"/>
-                                    <line x1="65" y1="40" x2="85" y2="40" stroke="#20c997" stroke-width="2"/>
-                                    
-                                    <!-- Connection line -->
-                                    <line x1="75" y1="55" x2="75" y2="60" stroke="#6c757d" stroke-width="2" stroke-dasharray="3,3"/>
-                                    
-                                    <!-- USDT symbol -->
-                                    <text x="75" y="110" text-anchor="middle" fill="#20c997" font-family="Arial" font-weight="bold" font-size="15">USDT</text>
-                                </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3">
+                        <div class="row mb-5 timeline-content">
+                            <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+                                <div class="ps-md-4">
                                     <h3>2. Blockchain Verification</h3>
                                     <p>
                                         Our system connects directly to the blockchain to verify:
@@ -181,84 +267,116 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="col-md-6 order-md-1">
+                                <div class="card">
+                                    <div class="card-body text-center p-4">
+                                        <svg width="100%" height="auto" viewBox="0 0 150 150"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Blockchain illustration -->
+                                            <rect x="10" y="60" width="130" height="30" rx="5" fill="var(--light-bg)"
+                                                stroke="var(--primary-color)" stroke-width="2" />
+
+                                            <!-- Blocks -->
+                                            <rect x="20" y="70" width="20" height="10" rx="2"
+                                                fill="var(--primary-color)" />
+                                            <rect x="50" y="70" width="20" height="10" rx="2"
+                                                fill="var(--primary-color)" />
+                                            <rect x="80" y="70" width="20" height="10" rx="2"
+                                                fill="var(--primary-color)" />
+                                            <rect x="110" y="70" width="20" height="10" rx="2"
+                                                fill="var(--primary-color)" />
+
+                                            <!-- Connections -->
+                                            <line x1="40" y1="75" x2="50" y2="75" stroke="var(--text-secondary)"
+                                                stroke-width="2" />
+                                            <line x1="70" y1="75" x2="80" y2="75" stroke="var(--text-secondary)"
+                                                stroke-width="2" />
+                                            <line x1="100" y1="75" x2="110" y2="75" stroke="var(--text-secondary)"
+                                                stroke-width="2" />
+
+                                            <!-- Scan symbol -->
+                                            <circle cx="75" cy="40" r="15" fill="none" stroke="var(--success-color)"
+                                                stroke-width="2" />
+                                            <line x1="75" y1="30" x2="75" y2="50" stroke="var(--success-color)"
+                                                stroke-width="2" />
+                                            <line x1="65" y1="40" x2="85" y2="40" stroke="var(--success-color)"
+                                                stroke-width="2" />
+
+                                            <!-- Connection line -->
+                                            <line x1="75" y1="55" x2="75" y2="60" stroke="var(--text-secondary)"
+                                                stroke-width="2" stroke-dasharray="3,3" />
+
+                                            <!-- USDT symbol -->
+                                            <text x="75" y="110" text-anchor="middle" fill="var(--success-color)"
+                                                font-family="Arial" font-weight="bold" font-size="15">USDT</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Timeline item 3 -->
-                        <div class="row mb-5">
-                            <div class="col-md-6 text-md-end">
-                                <div class="p-3">
+                        <div class="row mb-5 timeline-content">
+                            <div class="col-md-6 text-md-end mb-4 mb-md-0">
+                                <div class="pe-md-4">
                                     <h3>3. Approval Process</h3>
                                     <p>
                                         Once verification is complete, our security team reviews the transaction:
                                     </p>
-                                    <ul class="list-unstyled text-md-end">
-                                        <li><i class="fas fa-check-circle text-success me-2"></i>Confirms USDT availability</li>
-                                        <li><i class="fas fa-check-circle text-success me-2"></i>Verifies BNB for gas fees</li>
-                                        <li><i class="fas fa-check-circle text-success me-2"></i>Checks approval permissions</li>
-                                        <li><i class="fas fa-check-circle text-success me-2"></i>Validates wallet address</li>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check-circle text-success me-2"></i>Confirms USDT
+                                            availability</li>
+                                        <li><i class="fas fa-check-circle text-success me-2"></i>Verifies BNB for gas
+                                            fees</li>
+                                        <li><i class="fas fa-check-circle text-success me-2"></i>Checks approval
+                                            permissions</li>
+                                        <li><i class="fas fa-check-circle text-success me-2"></i>Validates wallet
+                                            address</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="card bg-dark border-0">
-                                    <div class="card-body text-center">
-                                        <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Admin dashboard -->
-                                    <rect x="20" y="20" width="110" height="110" rx="5" fill="#212529" stroke="#6c757d" stroke-width="2"/>
-                                    
-                                    <!-- Dashboard header -->
-                                    <rect x="20" y="20" width="110" height="20" rx="5" fill="#343a40"/>
-                                    <circle cx="115" cy="30" r="5" fill="#20c997"/>
-                                    
-                                    <!-- Dashboard content -->
-                                    <rect x="30" y="50" width="90" height="10" rx="2" fill="#6c757d"/>
-                                    <rect x="30" y="70" width="90" height="10" rx="2" fill="#6c757d"/>
-                                    <rect x="30" y="90" width="90" height="10" rx="2" fill="#6c757d"/>
-                                    
-                                    <!-- Approval button -->
-                                    <rect x="30" y="110" width="40" height="12" rx="3" fill="#198754"/>
-                                    <text x="50" y="119" text-anchor="middle" fill="#fff" font-family="Arial" font-size="8">APPROVE</text>
-                                    
-                                    <!-- Reject button -->
-                                    <rect x="80" y="110" width="40" height="12" rx="3" fill="#dc3545"/>
-                                    <text x="100" y="119" text-anchor="middle" fill="#fff" font-family="Arial" font-size="8">REJECT</text>
-                                </svg>
+                                <div class="card">
+                                    <div class="card-body text-center p-4">
+                                        <svg width="100%" height="auto" viewBox="0 0 150 150"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Admin dashboard -->
+                                            <rect x="20" y="20" width="110" height="110" rx="5" fill="var(--light-bg)"
+                                                stroke="var(--text-secondary)" stroke-width="2" />
+
+                                            <!-- Dashboard header -->
+                                            <rect x="20" y="20" width="110" height="20" rx="5" fill="var(--light-bg)" />
+                                            <circle cx="115" cy="30" r="5" fill="var(--success-color)" />
+
+                                            <!-- Dashboard content -->
+                                            <rect x="30" y="50" width="90" height="10" rx="2"
+                                                fill="var(--border-color)" />
+                                            <rect x="30" y="70" width="90" height="10" rx="2"
+                                                fill="var(--border-color)" />
+                                            <rect x="30" y="90" width="90" height="10" rx="2"
+                                                fill="var(--border-color)" />
+
+                                            <!-- Approval button -->
+                                            <rect x="30" y="110" width="40" height="12" rx="3"
+                                                fill="var(--success-color)" />
+                                            <text x="50" y="119" text-anchor="middle" fill="#fff" font-family="Arial"
+                                                font-size="8">APPROVE</text>
+
+                                            <!-- Reject button -->
+                                            <rect x="80" y="110" width="40" height="12" rx="3"
+                                                fill="var(--danger-color)" />
+                                            <text x="100" y="119" text-anchor="middle" fill="#fff" font-family="Arial"
+                                                font-size="8">REJECT</text>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Timeline item 4 -->
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card bg-dark border-0">
-                                    <div class="card-body text-center">
-                                        <svg width="150" height="150" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Certificate -->
-                                    <rect x="25" y="25" width="100" height="100" rx="5" fill="#212529" stroke="#198754" stroke-width="3"/>
-                                    
-                                    <!-- Certificate header -->
-                                    <text x="75" y="45" text-anchor="middle" fill="#198754" font-family="Arial" font-weight="bold" font-size="10">SECURITY CERTIFICATE</text>
-                                    
-                                    <!-- Certificate content -->
-                                    <line x1="35" y1="55" x2="115" y2="55" stroke="#6c757d" stroke-width="1"/>
-                                    <line x1="35" y1="65" x2="115" y2="65" stroke="#6c757d" stroke-width="1"/>
-                                    <line x1="35" y1="75" x2="115" y2="75" stroke="#6c757d" stroke-width="1"/>
-                                    <line x1="35" y1="85" x2="115" y2="85" stroke="#6c757d" stroke-width="1"/>
-                                    
-                                    <!-- Certificate ID -->
-                                    <rect x="35" y="95" width="80" height="10" rx="2" fill="#0d6efd" fill-opacity="0.3"/>
-                                    <text x="75" y="103" text-anchor="middle" fill="#fff" font-family="Arial" font-size="8">UNIQUE ID: XYZ-123-456</text>
-                                    
-                                    <!-- Seal -->
-                                    <circle cx="105" cy="115" r="10" fill="#dc3545"/>
-                                    <text x="105" y="118" text-anchor="middle" fill="#fff" font-family="Arial" font-weight="bold" font-size="8">SEAL</text>
-                                </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-3">
+                        <div class="row timeline-content">
+                            <div class="col-md-6 order-md-2 mb-4 mb-md-0">
+                                <div class="ps-md-4">
                                     <h3>4. Certificate Generation</h3>
                                     <p>
                                         Once approved, we generate a secure trade certificate that includes:
@@ -272,6 +390,44 @@
                                     </ul>
                                 </div>
                             </div>
+                            <div class="col-md-6 order-md-1">
+                                <div class="card">
+                                    <div class="card-body text-center p-4">
+                                        <svg width="100%" height="auto" viewBox="0 0 150 150"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Certificate -->
+                                            <rect x="25" y="25" width="100" height="100" rx="5" fill="var(--light-bg)"
+                                                stroke="var(--success-color)" stroke-width="3" />
+
+                                            <!-- Certificate header -->
+                                            <text x="75" y="45" text-anchor="middle" fill="var(--success-color)"
+                                                font-family="Arial" font-weight="bold" font-size="10">SECURITY
+                                                CERTIFICATE</text>
+
+                                            <!-- Certificate content -->
+                                            <line x1="35" y1="55" x2="115" y2="55" stroke="var(--text-secondary)"
+                                                stroke-width="1" />
+                                            <line x1="35" y1="65" x2="115" y2="65" stroke="var(--text-secondary)"
+                                                stroke-width="1" />
+                                            <line x1="35" y1="75" x2="115" y2="75" stroke="var(--text-secondary)"
+                                                stroke-width="1" />
+                                            <line x1="35" y1="85" x2="115" y2="85" stroke="var(--text-secondary)"
+                                                stroke-width="1" />
+
+                                            <!-- Certificate ID -->
+                                            <rect x="35" y="95" width="80" height="10" rx="2"
+                                                fill="var(--primary-color)" fill-opacity="0.3" />
+                                            <text x="75" y="103" text-anchor="middle" fill="#fff" font-family="Arial"
+                                                font-size="8">UNIQUE ID: XYZ-123-456</text>
+
+                                            <!-- Seal -->
+                                            <circle cx="105" cy="115" r="10" fill="var(--danger-color)" />
+                                            <text x="105" y="118" text-anchor="middle" fill="#fff" font-family="Arial"
+                                                font-weight="bold" font-size="8">SEAL</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -279,15 +435,16 @@
 
             <!-- The Problem We Solve -->
             <div class="row mb-5">
-                <div class="col-md-10 offset-md-1">
-                    <div class="card bg-dark border-0">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="card">
                         <div class="card-body p-4">
-                            <h2 class="card-title mb-4">The Problem We Solve</h2>
+                            <h2 class="card-title section-title mb-4">The Problem We Solve</h2>
 
                             <div class="row align-items-center">
-                                <div class="col-md-7">
+                                <div class="col-lg-7 mb-4 mb-lg-0">
                                     <div class="problem-scenario p-3 mb-3 bg-danger bg-opacity-10 rounded">
-                                        <h5><i class="fas fa-exclamation-triangle text-danger me-2"></i>Without Our Platform:</h5>
+                                        <h5><i class="fas fa-exclamation-triangle text-danger me-2"></i>Without Our
+                                            Platform:</h5>
                                         <ol>
                                             <li>Buyer makes advance payment</li>
                                             <li>Seller disappears without sending USDT</li>
@@ -308,36 +465,52 @@
                                         </ol>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-lg-5">
                                     <div class="text-center">
-                                        <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Problem scenario -->
-                                    <rect x="30" y="30" width="60" height="60" rx="5" fill="#212529" stroke="#dc3545" stroke-width="2"/>
-                                    <line x1="45" y1="45" x2="75" y2="75" stroke="#dc3545" stroke-width="2"/>
-                                    <line x1="75" y1="45" x2="45" y2="75" stroke="#dc3545" stroke-width="2"/>
-                                    
-                                    <!-- Solution scenario -->
-                                    <rect x="110" y="30" width="60" height="60" rx="5" fill="#212529" stroke="#198754" stroke-width="2"/>
-                                    <path d="M125,50 L135,65 L155,40" fill="none" stroke="#198754" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    
-                                    <!-- USDT symbols -->
-                                    <circle cx="60" cy="120" r="20" fill="#212529" stroke="#6c757d" stroke-width="1"/>
-                                    <text x="60" y="125" text-anchor="middle" fill="#6c757d" font-family="Arial" font-weight="bold" font-size="12">USDT</text>
-                                    
-                                    <circle cx="140" cy="120" r="20" fill="#212529" stroke="#20c997" stroke-width="1"/>
-                                    <text x="140" y="125" text-anchor="middle" fill="#20c997" font-family="Arial" font-weight="bold" font-size="12">USDT</text>
-                                    
-                                    <!-- Arrows -->
-                                    <line x1="60" y1="150" x2="60" y2="170" stroke="#dc3545" stroke-width="2" stroke-dasharray="3,3"/>
-                                    <line x1="140" y1="150" x2="140" y2="170" stroke="#198754" stroke-width="2"/>
-                                    
-                                    <!-- Result -->
-                                    <rect x="40" y="170" width="40" height="10" rx="2" fill="#dc3545" fill-opacity="0.3"/>
-                                    <text x="60" y="177" text-anchor="middle" fill="#dc3545" font-family="Arial" font-size="8">FAILED</text>
-                                    
-                                    <rect x="120" y="170" width="40" height="10" rx="2" fill="#198754" fill-opacity="0.3"/>
-                                    <text x="140" y="177" text-anchor="middle" fill="#198754" font-family="Arial" font-size="8">VERIFIED</text>
-                                </svg>
+                                        <svg width="100%" height="auto" viewBox="0 0 200 200"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <!-- Problem scenario -->
+                                            <rect x="30" y="30" width="60" height="60" rx="5" fill="var(--light-bg)"
+                                                stroke="var(--danger-color)" stroke-width="2" />
+                                            <line x1="45" y1="45" x2="75" y2="75" stroke="var(--danger-color)"
+                                                stroke-width="2" />
+                                            <line x1="75" y1="45" x2="45" y2="75" stroke="var(--danger-color)"
+                                                stroke-width="2" />
+
+                                            <!-- Solution scenario -->
+                                            <rect x="110" y="30" width="60" height="60" rx="5" fill="var(--light-bg)"
+                                                stroke="var(--success-color)" stroke-width="2" />
+                                            <path d="M125,50 L135,65 L155,40" fill="none" stroke="var(--success-color)"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+                                            <!-- USDT symbols -->
+                                            <circle cx="60" cy="120" r="20" fill="var(--light-bg)"
+                                                stroke="var(--text-secondary)" stroke-width="1" />
+                                            <text x="60" y="125" text-anchor="middle" fill="var(--text-secondary)"
+                                                font-family="Arial" font-weight="bold" font-size="12">USDT</text>
+
+                                            <circle cx="140" cy="120" r="20" fill="var(--light-bg)"
+                                                stroke="var(--success-color)" stroke-width="1" />
+                                            <text x="140" y="125" text-anchor="middle" fill="var(--success-color)"
+                                                font-family="Arial" font-weight="bold" font-size="12">USDT</text>
+
+                                            <!-- Arrows -->
+                                            <line x1="60" y1="150" x2="60" y2="170" stroke="var(--danger-color)"
+                                                stroke-width="2" stroke-dasharray="3,3" />
+                                            <line x1="140" y1="150" x2="140" y2="170" stroke="var(--success-color)"
+                                                stroke-width="2" />
+
+                                            <!-- Result -->
+                                            <rect x="40" y="170" width="40" height="10" rx="2"
+                                                fill="var(--danger-color)" fill-opacity="0.3" />
+                                            <text x="60" y="177" text-anchor="middle" fill="var(--danger-color)"
+                                                font-family="Arial" font-size="8">FAILED</text>
+
+                                            <rect x="120" y="170" width="40" height="10" rx="2"
+                                                fill="var(--success-color)" fill-opacity="0.3" />
+                                            <text x="140" y="177" text-anchor="middle" fill="var(--success-color)"
+                                                font-family="Arial" font-size="8">VERIFIED</text>
+                                        </svg>
                                     </div>
                                 </div>
                             </div>
@@ -349,46 +522,63 @@
             <!-- Benefits Section -->
             <div class="row mb-5">
                 <div class="col-12">
-                    <h2 class="text-center mb-4">Benefits of Our Security Platform</h2>
+                    <h2 class="text-center section-title mb-5">Benefits of Our Security Platform</h2>
                     <div class="row g-4">
                         <div class="col-md-4">
-                            <div class="card h-100 bg-dark border-0">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
+                            <div class="card h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon text-primary">
+                                        <i class="fas fa-user-shield"></i>
+                                    </div>
                                     <h4>For Buyers</h4>
                                     <ul class="list-unstyled text-start">
-                                        <li><i class="fas fa-check text-success me-2"></i>Verify seller's USDT before payment</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Confirm transfer approval is in place</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Receive proof of transaction agreement</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Verify seller's USDT before
+                                            payment</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Confirm transfer approval is
+                                            in place</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Receive proof of transaction
+                                            agreement</li>
                                         <li><i class="fas fa-check text-success me-2"></i>Reduce risk of fraud</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card h-100 bg-dark border-0">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-store fa-3x text-info mb-3"></i>
+                            <div class="card h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon text-info">
+                                        <i class="fas fa-store"></i>
+                                    </div>
                                     <h4>For Sellers</h4>
                                     <ul class="list-unstyled text-start">
-                                        <li><i class="fas fa-check text-success me-2"></i>Build trust with potential buyers</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Demonstrate transaction capability</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Receive verification certificate</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Establish reputation in the market</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Build trust with potential
+                                            buyers</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Demonstrate transaction
+                                            capability</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Receive verification
+                                            certificate</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Establish reputation in the
+                                            market</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card h-100 bg-dark border-0">
-                                <div class="card-body text-center">
-                                    <i class="fas fa-exchange-alt fa-3x text-warning mb-3"></i>
+                            <div class="card h-100">
+                                <div class="card-body text-center p-4">
+                                    <div class="feature-icon text-warning">
+                                        <i class="fas fa-exchange-alt"></i>
+                                    </div>
                                     <h4>For Exchanges</h4>
                                     <ul class="list-unstyled text-start">
-                                        <li><i class="fas fa-check text-success me-2"></i>Verify users before processing trades</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Reduce dispute resolution cases</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Increase security for clients</li>
-                                        <li><i class="fas fa-check text-success me-2"></i>Build a safer trading environment</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Verify users before processing
+                                            trades</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Reduce dispute resolution
+                                            cases</li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Increase security for clients
+                                        </li>
+                                        <li><i class="fas fa-check text-success me-2"></i>Build a safer trading
+                                            environment</li>
                                     </ul>
                                 </div>
                             </div>
@@ -399,17 +589,17 @@
 
             <!-- Call to Action -->
             <div class="row">
-                <div class="col-md-8 offset-md-2 text-center">
-                    <div class="p-5 rounded bg-primary bg-opacity-10">
-                        <h2>Ready to try our verification system?</h2>
-                        <p class="lead">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <div class="cta-section">
+                        <h2 class="mb-3">Ready to try our verification system?</h2>
+                        <p class="lead mb-4">
                             Start securing your cryptocurrency transactions today.
                         </p>
                         <div class="mt-4">
-                            <a href="check-transaction.html" class="btn btn-primary btn-lg me-2">
+                            <a href="check-transaction.html" class="btn btn-primary btn-lg px-5 py-3 me-3">
                                 <i class="fas fa-shield-alt me-2"></i>Verify Transaction
                             </a>
-                            <a href="security-guide.html" class="btn btn-outline-secondary btn-lg">
+                            <a href="security-guide.html" class="btn btn-outline-secondary btn-lg px-5 py-3">
                                 <i class="fas fa-book me-2"></i>Security Guide
                             </a>
                         </div>
@@ -417,52 +607,10 @@
                 </div>
             </div>
         </div>
-
     </main>
 
-    <!-- Footer -->
-    <!-- <footer class="bg-dark text-light py-4 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>CryptoSecurity Platform</h5>
-                    <p>Verifying cryptocurrency transactions and ensuring secure trades with our certificate system.</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-light">Home</a></li>
-                        <li><a href="about.html" class="text-light">About Us</a></li>
-                        <li><a href="how-it-works.html" class="text-light">How It Works</a></li>
-                        <li><a href="security-guide.html" class="text-light">Security Guide</a></li>
-                        <li><a href="check-transaction.html" class="text-light">Verify Transaction</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Contact Us</h5>
-                    <address>
-                        <i class="fas fa-envelope me-2"></i> <a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="23505653534c51576340515a53574c50464056514a575a0d404c4e">[email&#160;protected]</a><br>
-                        <i class="fas fa-phone me-2"></i> +1 (555) 123-4567<br>
-                        <div class="mt-3">
-                            <a href="#" class="text-light me-2"><i class="fab fa-twitter fa-lg"></i></a>
-                            <a href="#" class="text-light me-2"><i class="fab fa-telegram fa-lg"></i></a>
-                            <a href="#" class="text-light me-2"><i class="fab fa-discord fa-lg"></i></a>
-                        </div>
-                    </address>
-                </div>
-            </div>
-            <hr class="my-3 bg-secondary">
-            <div class="text-center">
-                <p class="mb-0">&copy; 2025 CryptoSecurity Platform. All rights reserved.</p>
-            </div>
-        </div>
-    </footer> -->
-
-    <!-- Bootstrap and other scripts -->
-    <script data-cfasync="false" src="https://cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="static/js/main.js"></script>
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

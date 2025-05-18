@@ -895,3 +895,16 @@ body.overlay-active {
 .close-overlay:hover {
     background: rgba(255, 255, 255, 0.2);
 }
+
+.overlay[style*="display: none"] {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* Add to your stylesheet */
+.overlay {
+    transition: opacity 0.5s ease;
+}
+.fade-out {
+    opacity: 0 !important;
+}

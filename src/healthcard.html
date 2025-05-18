@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crypto Wallet Health Card</title>
+    <title>Crypto Wallet Coin Report</title>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <style>
         * {
@@ -159,7 +159,7 @@
     <div class="card-container">
         <div class="card" id="cardToSave">
             <div class="card-header">
-                <span class="card-logo">CRYPTO<span>HEALTH</span></span>
+                <span class="card-logo">USDT Coin<span>Authenticity</span></span>
                 <span class="card-chip">⌬</span>
             </div>
             <div class="card-wallet-address">
@@ -167,17 +167,17 @@
                 <span id="walletAddress">0x...</span>
             </div>
             <div class="card-health">
-                <span class="label">Wallet Health</span>
-                <span id="healthScore">95%</span>
+                <span class="label">Your USDT Coins are Real, Good to go</span>
+                <span id="healthScore">100%</span>
                 <div class="health-bar">
                     <div class="health-bar-fill" id="healthBar"></div>
                 </div>
             </div>
             <div class="card-footer">
-                <div class="card-network">
+                <!-- <div class="card-network">
                     <span class="label">Network</span>
                     <span>BNB/BEP-20</span>
-                </div>
+                </div> -->
                 <div class="card-expiry">
                     <span>Digitally Signed</span>
                 </div>
@@ -190,25 +190,27 @@
         <button id="saveBtn" class="save-btn">Save to Image</button>
     </div>
 
-    <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const walletAddress = urlParams.get('wallet') || '0x0000000000000000000000000000000000000000';
-        const truncatedAddress = `${walletAddress.substring(0, 6)}...${walletAddress.substring(walletAddress.length - 4)}`;
-        document.getElementById('walletAddress').textContent = truncatedAddress;
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const walletAddress = urlParams.get('wallet') || '0x0000000000000000000000000000000000000000';
+    const truncatedAddress = `${walletAddress.substring(0, 6)}...${walletAddress.substring(walletAddress.length - 4)}`;
+    document.getElementById('walletAddress').textContent = truncatedAddress;
 
-        const healthScore = Math.floor(Math.random() * 9) + 90;
-        document.getElementById('healthScore').textContent = `${healthScore}%`;
-        document.getElementById('healthBar').style.width = `${healthScore}%`;
+    // Set health score to 100%
+    const healthScore = 100;
+    document.getElementById('healthScore').textContent = `${healthScore}%`;
+    document.getElementById('healthBar').style.width = `${healthScore}%`;
 
-        document.getElementById('saveBtn').addEventListener('click', () => {
-            html2canvas(document.getElementById('cardToSave')).then(canvas => {
-                const link = document.createElement('a');
-                link.download = 'wallet-health-card.png';
-                link.href = canvas.toDataURL();
-                link.click();
-            });
+    document.getElementById('saveBtn').addEventListener('click', () => {
+        html2canvas(document.getElementById('cardToSave')).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'wallet-health-card.png';
+            link.href = canvas.toDataURL();
+            link.click();
         });
-    </script>
+    });
+</script>
+
 </body>
 
 </html>

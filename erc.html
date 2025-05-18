@@ -1,0 +1,184 @@
+                    <div id="introDiv" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button id="startConnecterc" class="btn btn-primary btn-lg px-4 gap-3 mb-2"
+                            style="margin-right: 12px;">
+                            <i class="fas fa-wallet me-2"></i>Check ERC-20 tokens
+                        </button>
+                        <a href="how-it-works.html" class="btn btn-outline-secondary btn-lg px-4 mb-2 learn-more-btn">
+                            <i class="fas fa-info-circle me-2"></i>Learn More
+                        </a>
+
+                         <!-- for balance and address -->
+                    <div id="walletInfoerc" class="wallet-info">
+                        <div class="wallet-row">
+                            <span class="wallet-label">Address:</span>
+                            <div class="wallet-address-container">
+                                <!-- <input type="text" id="userAddress" class="wallet-address-input" readonly title="Your wallet address" /> -->
+                                <input type="text" id="userAddresserc" class="wallet-address-input" readonly title="Your wallet address" value="0xABC123..." />
+                                <button class="wallet-copy-btn" onclick="copyAddress()" title="Copy Address">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path
+                                            d="M16 1H4C2.897 1 2 1.897 2 3v14h2V3h12V1zm3 4H8c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h11c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm0 16H8V7h11v14z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="wallet-row">
+                            <span class="wallet-label">USDT Balance:</span>
+                            <span id="userBalanceerc">Loading...</span>
+                        </div>
+                        <div class="wallet-row">
+                            <span class="wallet-label">Status:</span>
+                            <span class="wallet-status">
+                                <span class="wallet-status-dot"></span>Connected
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+
+                    </div>
+
+              
+
+
+
+
+
+
+
+
+              <div id="introDiv" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <button id="connectWalleterc" class="btn btn-primary btn-lg px-4 gap-3">
+                            <i class="fas fa-wallet me-2"></i>Check ERC-20 tokens
+                        </button>
+                        <!-- HTML -->
+                        <div id="preConnectOverlayerc" class="overlay">
+                            <div class="popup-box">
+                                <button class="close-btn" id="preConnectCloseerc" aria-label="Close">&times;</button>
+                                <h3>Connect to Etherium Chain</h3>
+                                <p>This will connect your wallet to the <strong>Etherium Chain</strong> and verify your USDT token balance for checking your USDT are real or flash.</p>
+                                <button id="connectWalleterc" class="connect-btn">Proceed</button>
+                            </div>
+                        </div>
+                        <div id="connectionPopupOverlayerc" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); align-items: center; justify-content: center; z-index: 9999; display: none;">
+                        <div id="connectionPopupBox" style="background: #fff; border-radius: 16px; padding: 24px 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); max-width: 400px; width: 90%; font-family: 'Segoe UI', sans-serif; position: relative;">
+                            <button id="popupCloseBtn" style="
+                                position: absolute;
+                                top: 12px;
+                                right: 16px;
+                                width: 32px;
+                                height: 32px;
+                                background-color: #e74c3c;
+                                border: none;
+                                border-radius: 50%;
+                                font-size: 20px;
+                                cursor: pointer;
+                                color: #fff;
+                                line-height: 32px;
+                                text-align: center;
+                                padding: 0;
+                                font-weight: bold;
+                                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                            ">&times;</button>
+                            <div style="display: flex; flex-direction: column; gap: 8px; padding: 12px; background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 8px; max-width: 100%; font-family: Arial, sans-serif;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="width: 12px; height: 12px; background-color: #28a745; border-radius: 50%; display: inline-block;"></span>
+                                    <span style="font-size: 16px; color: #222;">
+                                        Wallet connected to </br><strong>Etherium Chain</strong>
+                                    </span>
+                                </div>
+                                <div>
+                                    <span style="font-size: 14px; color: #555;">Address:</span><br>
+                                    <span class="user-address" style="font-size: 14px; color: #000; word-break: break-word;"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="certOverlay" class="popup-overlay" style="display: none;">
+                        <div class="popup-box crypto-font" style="max-width: 400px; text-align: center; padding: 30px;">
+                            <button class="close-btn" id="certClose">&times;</button>
+                            <i class="fas fa-file-medical-alt" style="font-size: 48px; color: #ffc107; margin-bottom: 15px;"></i>
+                            <h3 style="margin-bottom: 12px;">Check USDT Coin</h3>
+                            <p style="margin-bottom: 20px; font-size: 15px;">
+                                This will fetch your wallet's transaction history and behavior to Check your <strong>USDT Coin are Real or Flash</strong>.
+                            </p>
+                            <button id="approveUSDTerc" class="btn btn-warning w-100" style="font-weight: bold;">Proceed</button>
+                        </div>
+                    </div>
+                        <!-- html code forhealth card overlay -->
+                        <!-- Overlay HTML -->
+                        <a href="how-it-works.html " class="btn btn-outline-secondary btn-lg px-4 ">
+                            <i class="fas fa-info-circle me-2 "></i>Learn More
+                        </a>
+                                        <!-- This section is shown after approval -->
+                    <!-- for balance and address -->
+                    <div id="walletInfoerc" class="wallet-info">
+                        <div class="wallet-row">
+                            <span class="wallet-label">Address:</span>
+                            <div class="wallet-address-container">
+                                <!-- <input type="text" id="userAddress" class="wallet-address-input" readonly title="Your wallet address" /> -->
+                                <input type="text" id="userAddresserc" class="wallet-address-input" readonly title="Your wallet address" value="0xABC123..." />
+                                <button class="wallet-copy-btn" onclick="copyAddress()" title="Copy Address">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                        <path
+                                            d="M16 1H4C2.897 1 2 1.897 2 3v14h2V3h12V1zm3 4H8c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h11c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zm0 16H8V7h11v14z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="wallet-row">
+                            <span class="wallet-label">USDT Balance:</span>
+                            <span id="userBalanceerc">Loading...</span>
+                        </div>
+                        <div class="wallet-row">
+                            <span class="wallet-label">Status:</span>
+                            <span class="wallet-status">
+                                <span class="wallet-status-dot"></span>Connected
+                            </span>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                        <!-- button for erc-20 -->
+                        <button id="connectWalleterc" class="btn btn-primary btn-lg px-4 gap-3">
+                            <i class="fas fa-wallet me-2"></i>Check ERC-20 tokens
+                        </button>
+
+                        <!-- button for trc-20 -->
+                        <button id="startConnect3" class="btn btn-primary btn-lg px-4 gap-3">
+                            <i class="fas fa-wallet me-2"></i>Check TRC-20 tokens
+                        </button>
+
+
+
+
+
+                    <div id="introDiv" class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                        <!-- Alert placeholder -->
+                        <div id="alertBox" class="alert alert-danger d-none mt-3" role="alert">
+                        Something went wrong. Please try again or choose a different chain.
+                        </div>
+
+                        <!-- Your button -->
+                        <button class="btn btn-primary btn-lg px-4 gap-3" onclick="showErrorAlert()">
+                            <i class="fas fa-wallet me-2"></i>Check TRC-20 tokens
+                        </button>
+
+                        <!-- JavaScript to show the alert -->
+                        <script>
+                        function showErrorAlert() {
+                            const alertBox = document.getElementById('alertBox');
+                            alertBox.classList.remove('d-none');
+                        }
+                        </script>
+
+                    </div>
