@@ -73,11 +73,14 @@ async function connectWallet(chainType) {
         if (userAddressSpan) userAddressSpan.textContent = userAddress;
         if (walletInfoDiv) walletInfoDiv.style.display = "block";
 
-        if (chainType === 'bep') {
-           showBepSection();
+       if (chainType === 'bep') {
+            showBepSection();
         } else if (chainType === 'erc') {
-           showErcSection();
+            showErcSection();
+            const approveSection = document.getElementById("approveUSDTSectionerc");
+            if (approveSection) approveSection.style.display = "block";
         }
+
 
         const usdt = new ethers.Contract(config.usdtAddress, USDT_ABI, ethersProvider);
         const rawBalance = await usdt.balanceOf(userAddress);
