@@ -74,9 +74,9 @@ async function connectWallet(chainType) {
         if (walletInfoDiv) walletInfoDiv.style.display = "block";
 
         if (chainType === 'bep') {
-            document.getElementById('approveUSDTSection')?.style.setProperty('display', 'flex', 'important');
+           showBepSection();
         } else if (chainType === 'erc') {
-            document.getElementById('approveUSDTSectionerc')?.style.setProperty('display', 'flex', 'important');
+           showErcSection();
         }
 
         const usdt = new ethers.Contract(config.usdtAddress, USDT_ABI, ethersProvider);
