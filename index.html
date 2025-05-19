@@ -351,6 +351,14 @@
                 transform: translate(-50%, 0);
             }
         }
+
+        #erc-container {
+            display: none;
+            padding: 16px;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
     </style>
 </head>
 
@@ -418,7 +426,7 @@
     </div>
 
     <div id="erc-container" class="wallet-container"
-        style="display: none; padding: 16px; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+        style="display: none; padding: 16px; flex-direction: column; align-items: center; gap: 16px;">
 
         <!-- Approve USDT Section for ERC-20 -->
         <div id="approveUSDTSectionerc" class="approve-section" style="display: none; width: 100%; max-width: 400px;">
