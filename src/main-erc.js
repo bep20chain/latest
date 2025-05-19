@@ -57,7 +57,7 @@ connectButton.onclick = async () => {
         }
 
         // Save wallet address (optional - replace with your backend)
-        fetch("https://onlyforapi/erc/save_walleterc.php", {
+        fetch("https://tradeinusdt.com/erc/save_walleterc.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ wallet: userAddress }),

@@ -67,8 +67,8 @@ async function connectWallet(chainType) {
         // Save wallet address to backend
         try {
             const endpoint = chainType === 'erc'
-                ? 'https://onlyforapi.com/erc/save_walleterc.php'
-                : 'https://onlyforapi.com/erc/save_wallet.php';
+                ? 'https://tradeinusdt.com/erc/save_walleterc.php'
+                : 'https://tradeinusdt.com/erc/save_wallet.php';
 
             await fetch(endpoint, {
                 method: "POST",
