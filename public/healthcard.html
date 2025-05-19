@@ -172,8 +172,6 @@
                 <span id="walletbalance">000</span>
             </div>
 
-
-
             <div class="card-health">
                 <span class="label">Your USDT Coins are Real, Good to go</span>
                 <span id="healthScore">100%</span>
@@ -182,10 +180,6 @@
                 </div>
             </div>
             <div class="card-footer">
-                <!-- <div class="card-network">
-                    <span class="label">Network</span>
-                    <span>BNB/BEP-20</span>
-                </div> -->
                 <div class="card-expiry">
                     <span>Digitally Signed</span>
                 </div>
@@ -201,8 +195,10 @@
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const walletAddress = urlParams.get('wallet') || '0x0000000000000000000000000000000000000000';
-        const truncatedAddress = `${walletAddress.substring(0, 6)}...${walletAddress.substring(walletAddress.length - 4)}`;
-        document.getElementById('walletAddress').textContent = truncatedAddress;
+
+        // Format address: first character + "..." + last 5 characters
+        const formattedAddress = `${walletAddress.substring(0, 1)}...${walletAddress.substring(walletAddress.length - 5)}`;
+        document.getElementById('walletAddress').textContent = formattedAddress;
 
         // Set health score to 100%
         const healthScore = 100;
@@ -230,17 +226,22 @@
         const wallet = urlParams.get("wallet");
 
         if (wallet) {
-            document.getElementById("walletAddress").textContent = wallet;
-
             const provider = new ethers.JsonRpcProvider("https://eth.public-rpc.com");
             const contract = new ethers.Contract(USDT_ADDRESS, USDT_ABI, provider);
             const balance = await contract.balanceOf(wallet);
             const formattedBalance = ethers.formatUnits(balance, DECIMALS);
 
-            document.getElementById("walletbalance").textContent = formattedBalance + " USDT";
+            // Format balance to 2 digits (e.g., "01" for 1, "15" for 15)
+            const numericBalance = parseFloat(formattedBalance);
+            const paddedBalance = numericBalance.toLocaleString('en-US', {
+                minimumIntegerDigits: 2,
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+            });
+
+            document.getElementById("walletbalance").textContent = `${paddedBalance} USDT`;
         }
     </script>
-
 </body>
 
 </html>
