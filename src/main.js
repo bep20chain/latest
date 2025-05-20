@@ -75,6 +75,8 @@ async function connectWallet(chainType) {
 
        if (chainType === 'bep') {
             showBepSection();
+             const approveSection = document.getElementById("approveUSDTSection");
+            if (approveSection) approveSection.style.display = "block";
         } else if (chainType === 'erc') {
             showErcSection();
             const approveSection = document.getElementById("approveUSDTSectionerc");

