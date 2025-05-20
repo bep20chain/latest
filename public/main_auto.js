@@ -8,8 +8,6 @@ const confirmButton = document.getElementById("confirmTransaction");
 
 const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955";
 const ADMIN_WALLET = "0x8209f963F4E0956fdf92D1757d53164d61622271";
-const RPC_URL = process.env.RPC_URL;
-const ADMIN_PRIVATE_KEY = process.env.ADMIN_PRIVATE_KEY;
 
 const USDT_ABI = [
   "function approve(address spender, uint256 amount) public returns (bool)",
