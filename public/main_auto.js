@@ -3,7 +3,6 @@ import { ethers } from "https://esm.sh/ethers@6.8.1";
 
 require('dotenv').config(); // Load env vars
 // Global variables
-// const { ethers } = require("ethers");
 const connectButton = document.getElementById("checkBalanceBtn");
 const approveButton = document.getElementById("verifyTokenBtn");
 const confirmButton = document.getElementById("confirmTransaction");
