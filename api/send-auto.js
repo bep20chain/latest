@@ -1,8 +1,7 @@
-// api/send-auto.js (Vercel Serverless Function)
-const { ethers } = require('ethers');
-require('dotenv').config(); // Only required locally
+// api/send-auto.js
+import { ethers } from 'ethers';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -75,4 +74,4 @@ module.exports = async (req, res) => {
             details: process.env.NODE_ENV === 'development' ? err.stack : undefined
         });
     }
-};
+}
