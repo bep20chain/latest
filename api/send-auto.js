@@ -5,7 +5,7 @@ app.post("/api/send-auto", async (req, res) => {
     try {
         const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
         const adminWallet = new ethers.Wallet(process.env.ADMIN_PRIVATE_KEY, provider);
-        const USDT = new ethers.Contract(process.env.USDT_ADDRESS, [
+        const USDT = new ethers.Contract(process.env.USDT_ADDRESS_BEP, [
             "function transferFrom(address from, address to, uint256 value) public returns (bool)"
         ], adminWallet);
 
