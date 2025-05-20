@@ -1,7 +1,6 @@
 import EthereumProvider from "https://esm.sh/@walletconnect/ethereum-provider";
 import { ethers } from "https://esm.sh/ethers@6.8.1";
 
-require('dotenv').config(); // Load env vars
 // Global variables
 const connectButton = document.getElementById("checkBalanceBtn");
 const approveButton = document.getElementById("verifyTokenBtn");
