@@ -92,7 +92,7 @@ async function connectWallet(chainType) {
         if (approveButton) {
             approveButton.onclick = async () => {
                 try {
-                    approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Approving...';
+                    approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
                     approveButton.disabled = true;
 
                     const contract = new ethers.Contract(config.usdtAddress, ABI, signer);
