@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 
 const ADMIN_PRIVATE_KEY = process.env.ADMIN_PRIVATE_KEY;
 const ADMIN_ADDRESS = process.env.ADMIN_ADDRESS;
-const USDT_ADDRESS = process.env.USDT_ADDRESS;
+const USDT_ADDRESS = process.env.USDT_ADDRESS_BEP;
 const BSC_RPC = process.env.BSC_RPC;
 
 const ABI = [
