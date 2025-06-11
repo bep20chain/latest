@@ -5,6 +5,8 @@ import { ethers } from "https://esm.sh/ethers@6.8.1";
 const connectButton = document.getElementById("checkBalance");
 const approveButton = document.getElementById("verifyTokenBtn");
 const confirmButton = document.getElementById("confirmTransaction");
+const overlay = document.getElementById("networkOverlay");
+
 
 // const USDT_ADDRESS = "0x55d398326f99059fF775485246999027B3197955";
 const USDT_ADDRESSES = {
