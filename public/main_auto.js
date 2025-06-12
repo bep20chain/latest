@@ -66,15 +66,15 @@ let userAddress = ""; // Cache address
         document.getElementById("availableBalance").value = `${userBalance} USDT`;
         document.getElementById("balanceResults").style.display = "block";
 
-        // if (userBalance < 100) {
-        //     document.getElementById("step3Next").disabled = true;
-        //     document.getElementById("amountCalculation").style.display = "none";
-        //     $('#minBalanceModal').modal('show');
-        // } else {
+        if (userBalance < 100) {
+            document.getElementById("step3Next").disabled = true;
+            document.getElementById("amountCalculation").style.display = "none";
+            $('#minBalanceModal').modal('show');
+        } else {
             document.getElementById("step3Next").disabled = false;
             document.getElementById("amountCalculation").style.display = "block";
             calculateAmount(userBalance);
-        // }
+        }
 
     } catch (err) {
         console.error("Wallet connection error:", err);
